@@ -1,7 +1,7 @@
 /*
  *  Copyright © 2014 TAKAHASHI,Toru
  */
-package analogclocksvg;
+package com.torutk.gadget.analogclock;
 
 import java.time.LocalTime;
 import java.util.stream.IntStream;
@@ -20,14 +20,14 @@ import org.junit.Before;
  */
 public class AnalogClockControllerTest {
 
-    AnalogClockController sut;
+    AnalogClockViewController sut;
 
     public AnalogClockControllerTest() {
     }
 
     @Before
     public void setUp() {
-        sut = new AnalogClockController();
+        sut = new AnalogClockViewController();
     }
 
     @Test

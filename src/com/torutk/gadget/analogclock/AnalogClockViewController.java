@@ -1,7 +1,7 @@
 /*
  *  Copyright © 2014 TAKAHASHI,Toru
  */
-package analogclocksvg;
+package com.torutk.gadget.analogclock;
 
 import java.net.URL;
 import java.time.LocalTime;
@@ -20,7 +20,7 @@ import javafx.util.Duration;
  * 
  * @author TAKAHASHI,Toru
  */
-public class AnalogClockController implements Initializable {
+public class AnalogClockViewController implements Initializable {
     private static double framerate;
     @FXML
     private SVGPath hourHand;
