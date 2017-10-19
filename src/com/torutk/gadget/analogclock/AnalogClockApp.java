@@ -1,7 +1,7 @@
 /*
  *  Copyright © 2014 TAKAHASHI,Toru
  */
-package analogclocksvg;
+package com.torutk.gadget.analogclock;
 
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -21,7 +21,7 @@ import javafx.stage.StageStyle;
  * 
  * @author TAKAHASHI,Toru
  */
-public class AnalogClockSvg extends Application {
+public class AnalogClockApp extends Application {
     private static final double INITIAL_WINDOW_SIZE = 200d;
     private static final double MAX_SCALE = 6d;
     private static final double MIN_SCALE = 0.32;
@@ -37,7 +37,7 @@ public class AnalogClockSvg extends Application {
     public void start(Stage primaryStage) throws Exception {
         parseParameters();
         bundle = ResourceBundle.getBundle(getClass().getName());
-        root = FXMLLoader.load(getClass().getResource("AnalogClock.fxml"), bundle);
+        root = FXMLLoader.load(getClass().getResource("AnalogClockView.fxml"), bundle);
         Scene scene = new Scene(root, INITIAL_WINDOW_SIZE, INITIAL_WINDOW_SIZE, Color.TRANSPARENT);
         root.prefWidthProperty().bind(scene.widthProperty());
         root.prefHeightProperty().bind(scene.heightProperty());
@@ -104,7 +104,7 @@ public class AnalogClockSvg extends Application {
         Platform.runLater(() -> zoom(Double.valueOf(params.getOrDefault("scale", "1.0"))));
         Platform.runLater(() -> stage.setX(Double.valueOf(params.getOrDefault("x", "0.0"))));
         Platform.runLater(() -> stage.setY(Double.valueOf(params.getOrDefault("y", "0.0"))));
-        AnalogClockController.setTargetFramerate(Double.valueOf(params.getOrDefault("fps", "60.0")));
+        AnalogClockViewController.setTargetFramerate(Double.valueOf(params.getOrDefault("fps", "60.0")));
     }
 
 }

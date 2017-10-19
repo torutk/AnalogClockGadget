@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.SVGPath?>
 
-<StackPane style="-fx-background-color: transparent;" stylesheets="@AnalogClock.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="analogclocksvg.AnalogClockController">
+<StackPane style="-fx-background-color: transparent;" stylesheets="@AnalogClock.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.torutk.gadget.analogclock.AnalogClockViewController">
     <children>
         <Group>
             <children>
