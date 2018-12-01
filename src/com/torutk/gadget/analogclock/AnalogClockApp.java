@@ -92,13 +92,6 @@ public class AnalogClockApp extends Application {
         stage.setHeight(INITIAL_WINDOW_SIZE * scale);
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     private void parseParameters() {
         Map<String, String> params = getParameters().getNamed();
         Platform.runLater(() -> zoom(Double.valueOf(params.getOrDefault("scale", "1.0"))));
