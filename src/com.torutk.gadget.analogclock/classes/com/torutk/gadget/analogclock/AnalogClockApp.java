@@ -100,4 +100,7 @@ public class AnalogClockApp extends Application {
         AnalogClockViewController.setTargetFramerate(Double.valueOf(params.getOrDefault("fps", "60.0")));
     }
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
