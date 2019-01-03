@@ -20,3 +20,8 @@ nbproject/UPDATED.txt
 
 # Misc
 *.lnk
+*.wixobj
+*.wixpdb
+runtime/
+runtime.wxs
+AnalogClock.msi
