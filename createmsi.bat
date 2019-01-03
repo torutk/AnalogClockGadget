@@ -49,6 +49,8 @@ jlink --module-path %JAVAFX_JMOD_PATH%;build\modules ^
 
 if ERRORLEVEL 1 goto FAIL_JLINK
 
+copy package\windows\%LAUNCHER%.bat %RUNTIME_PATH%\bin
+
 if not "%ENABLE_WIX%"=="1" goto END
 
 :WIX

@@ -2,7 +2,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Product Id="*" Name="Analog Clock" 
-           Language="1041" Codepage="932" Version="0.5.0.1"
+           Language="1041" Codepage="932" Version="0.5.4"
            Manufacturer="High Bridge" 
            UpgradeCode="fe287b25-e03d-4744-90f4-96b05dc36bf0">
     <Package Description="Analog Clock Gadget"
@@ -18,10 +18,34 @@
 	  <Directory Id="ApplicationFolder" Name="AnalogClock" />
 	</Directory>
       </Directory>
+      <Directory Id="ProgramMenuFolder">
+          <Directory Id="ApplicationProgramsFolder" Name="High Bridge" />
+      </Directory>
     </Directory>
+
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="*">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+                  Icon="java.exe"
+                  Name="Analog Clock Gadget"
+                  Show="minimized"
+                  Target="[ApplicationFolder]\bin\analogclock.bat"
+                  WorkingDirectory="ApplicationFolder"/>
+        <RemoveFolder Id="CleanUpShortcut"
+                      Directory="ApplicationProgramsFolder"
+                      On="uninstall" />
+        <RegistryValue Root="HKCU"
+                       Key="Software\[Manufacturer]\[ProductName]"
+                       Name="installed" Type="integer" Value="1"
+                       KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <Icon Id="java.exe" SourceFile="runtime\bin\java.exe" />
     
     <Feature Id="Product" Title="Analog Clock" Level="1">
       <ComponentGroupRef Id="RuntimeGroup" />
+      <ComponentRef Id="ApplicationShortcut" />
     </Feature>
   </Product>
 </Wix>
