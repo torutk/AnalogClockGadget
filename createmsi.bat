@@ -80,7 +80,8 @@ if ERRORLEVEL 1 goto FAIL_CANDLE
 
 :: light
 echo # LIGHT to create MSI installer
-light -nologo %TARGET_BASE%.wixobj runtime.wixobj -o %TARGET_BASE%.msi
+light -nologo %TARGET_BASE%.wixobj runtime.wixobj -o %TARGET_BASE%.msi ^
+-ext WixUIExtension
 if ERRORLEVEL 1 goto FAIL_LIGHT
 
 :: validate

@@ -2,14 +2,14 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Product Id="*" Name="Analog Clock" 
-           Language="1041" Codepage="932" Version="0.5.4"
+           Language="1033" Version="0.5.5"
            Manufacturer="High Bridge" 
            UpgradeCode="fe287b25-e03d-4744-90f4-96b05dc36bf0">
     <Package Description="Analog Clock Gadget"
              Comments="(c) 2019 High Bridge"
              InstallerVersion="200" Compressed="yes"
              InstallScope="perMachine" />
-    <MajorUpgrade DowngradeErrorMessage="既に新しい [ProductName] がインストールされています。"/>
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed. Setup will now exit." />
     <MediaTemplate EmbedCab="yes" />
 
     <Directory Id="TARGETDIR" Name="SourceDir">
@@ -47,5 +47,9 @@
       <ComponentGroupRef Id="RuntimeGroup" />
       <ComponentRef Id="ApplicationShortcut" />
     </Feature>
+
+    <UIRef Id="WixUI_Minimal" />
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+
   </Product>
 </Wix>
