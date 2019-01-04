@@ -63,7 +63,7 @@ if not exist %RUNTIME_PATH% goto FAIL_NO_RUNTIME
 
 :: harvest runtime image files
 echo # HEAT to harvest runtime image
-heat dir %RUNTIME_PATH% -nologo -srd -dr ApplicationFolder ^
+heat dir %RUNTIME_PATH% -nologo -srd -dr APPLICATIONFOLDER ^
  -cg RuntimeGroup -gg -g1 -sfrag -sreg ^
  -var "var.runtimeFolder" -o runtime.wxs
 
