@@ -1,9 +1,5 @@
-/*
- *  Copyright © 2017 toru
- */
-module AnalogClockGadget {
+module com.torutk.gadget.analogclock {
     requires javafx.controls;
     requires javafx.fxml;
-    exports com.torutk.gadget.analogclock;
-    opens com.torutk.gadget.analogclock to javafx.fxml;
+    opens com.torutk.gadget.analogclock to javafx.graphics, javafx.fxml;
 }
