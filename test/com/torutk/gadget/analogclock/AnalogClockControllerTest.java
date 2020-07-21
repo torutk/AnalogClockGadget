@@ -6,13 +6,14 @@ package com.torutk.gadget.analogclock;
 import java.time.LocalTime;
 import java.util.stream.IntStream;
 import static java.util.stream.Collectors.joining;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Line;
 import javafx.scene.transform.Rotate;
-import static org.hamcrest.CoreMatchers.is;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  *
@@ -25,7 +26,7 @@ public class AnalogClockControllerTest {
     public AnalogClockControllerTest() {
     }
 
-    @Before
+    @BeforeEach
     public void setUp() {
         sut = new AnalogClockViewController();
     }
@@ -33,7 +34,12 @@ public class AnalogClockControllerTest {
     @Test
     public void getMinuteAngleのテスト() {
         LocalTime time = LocalTime.of(0, 0, 30);
-        assertThat(sut.getMinuteAgnel(time), is(3));
+        assertEquals (3, sut.getMinuteAgnel(time));
+    }
+
+    @Test
+    public void failさせるテスト() {
+        fail("JUnit動作環境が動いていることの確認");
     }
 
     @Test

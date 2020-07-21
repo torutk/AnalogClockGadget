@@ -8,6 +8,16 @@ java {
     modularity.inferModulePath = true
 }
 
+repositories {
+    flatDir {
+        dirs "${property('library.junit5.dir')}"
+    }
+}
+
+dependencies {
+    testImplementation 'org.junit.platform:junit-platform-console-standalone:1.6.2'
+}
+
 sourceSets {
     main {
         java {
@@ -31,4 +41,8 @@ tasks.withType(JavaCompile) {
 application {
     mainModule = 'com.torutk.gadget.analogclock'
     mainClass = 'com.torutk.gadget.analogclock.AnalogClockApp'
+}
+
+test {
+    useJUnitPlatform()
 }
