@@ -18,6 +18,7 @@ h3. command line option
 | @--y@    | @--y=N@     | gadget screen position of y to N | 0 |
 | @--scale@| @--scale=N@ | scale ratio of gadget screen size to N | 1.0 |
 | @--fps@  | @--fps=N@   | animation frame per second to N | 60 |
+| @--on-top@|@--on-top=T@| gadget always on top if T is true | false |
 
 * Note1) default fps(=60) consumes kind of cpu usage. recommend to set fewer fps.
 
@@ -26,6 +27,7 @@ h3. user operation
 * close gadget by context menu (pop up by right mouse button)
 * move gadget by mouse dragging
 * resize gadget by Ctrl key + mouse wheeling, or from context menu
+* change always on top by context menu
 
 h2. reference
 
