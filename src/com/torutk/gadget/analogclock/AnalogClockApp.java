@@ -39,13 +39,14 @@ public class AnalogClockApp extends Application {
     
     @Override
     public void start(Stage primaryStage) throws Exception {
+        alwaysOnTopProperty.addListener(((observable, oldValue, newValue) -> primaryStage.setAlwaysOnTop(newValue)));
         parseParameters();
         bundle = ResourceBundle.getBundle(getClass().getName());
         root = FXMLLoader.load(getClass().getResource("AnalogClockView.fxml"), bundle);
         Scene scene = new Scene(root, INITIAL_WINDOW_SIZE, INITIAL_WINDOW_SIZE, Color.TRANSPARENT);
         root.prefWidthProperty().bind(scene.widthProperty());
         root.prefHeightProperty().bind(scene.heightProperty());
-        
+
         // マウスのドラッグ操作でウィンドウを移動
         scene.setOnMousePressed(e -> {
             dragStartX = e.getSceneX();
@@ -75,8 +76,8 @@ public class AnalogClockApp extends Application {
         MenuItem zoomOutItem = new MenuItem(bundle.getString("menu_zoomOut"));
         zoomOutItem.setOnAction(e -> zoom(0.9));
         CheckMenuItem onTopItem = new CheckMenuItem(bundle.getString("menu_alwaysOnTop"));
-        alwaysOnTopProperty.bind(onTopItem.selectedProperty());
-        alwaysOnTopProperty.addListener((observable, oldValue, newValue) -> primaryStage.setAlwaysOnTop(newValue));
+        onTopItem.selectedProperty().bindBidirectional(alwaysOnTopProperty);
+
         popup.getItems().addAll(zoomInItem, zoomOutItem, onTopItem, exitItem);
         // コンテキストメニュー操作（OS依存）をしたときに、ポップアップメニュー表示
         // Windows OSでは、マウスの右クリック、touchパネルの長押しで発生
@@ -112,6 +113,7 @@ public class AnalogClockApp extends Application {
         Platform.runLater(() -> stage.setX(Double.valueOf(params.getOrDefault("x", "0.0"))));
         Platform.runLater(() -> stage.setY(Double.valueOf(params.getOrDefault("y", "0.0"))));
         AnalogClockViewController.setTargetFramerate(Double.valueOf(params.getOrDefault("fps", "60.0")));
+        alwaysOnTopProperty.setValue(Boolean.valueOf(params.getOrDefault("on-top", "false")));
     }
 
 }
