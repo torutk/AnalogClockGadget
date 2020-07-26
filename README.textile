@@ -4,4 +4,38 @@ This is a desktop analog clock gadget program written in Java and JavaFX.
 
 !LooksAnalogClockGadget.png!
 
+h2. How to build
+
+This repository has a source projects of Analog Clock Gadget to build with Gradle 6.4+ and Java SE 11+ with JavaFX.
+Additionally, to create Windows installer with Java SE 14+ and WiX Toolset 3.10+.
+
+h2. Usage
+
+h3. command line option
+
+| Option | Usage       | Meaning | default |
+| --x    | --x=N       | gadget screen position of x to N | 0 |
+| --y    | --y=N       | gadget screen position of y to N | 0 |
+| --scale| --scale=N   | scale ratio of gadget screen size to N | 1.0 |
+| --fps  | --fps=N     | animation frame per second to N | 60 |
+
+* Note1) default fps(=60) consumes kind of cpu usage. recommend to set fewer fps.
+
+h3. user operation
+
+* close gadget by context menu (pop up by right mouse button)
+* move gadget by mouse dragging
+* resize gadget by Ctrl key + mouse wheeling, or from context menu
+
+h2. reference
+
+h3. history of development
+
+The wiki page of the history of this gadget is as follows (in Japanese).
+
+https://www.torutk.com/projects/swe/wiki/JavaFX%E3%81%A8%E3%82%A2%E3%83%8A%E3%83%AD%E3%82%B0%E6%99%82%E8%A8%88
+
+The session slide in JJUG CCC 2015 Spring (Japan Java User Group, Cross Community Conference). (in Japanese)
+
+https://www.slideshare.net/torutk/java-fxjjug-ccc-2015-spring-g7
 
