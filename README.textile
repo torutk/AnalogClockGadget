@@ -13,11 +13,11 @@ h2. Usage
 
 h3. command line option
 
-| Option | Usage       | Meaning | default |
-| --x    | --x=N       | gadget screen position of x to N | 0 |
-| --y    | --y=N       | gadget screen position of y to N | 0 |
-| --scale| --scale=N   | scale ratio of gadget screen size to N | 1.0 |
-| --fps  | --fps=N     | animation frame per second to N | 60 |
+| Option   | Usage       | Meaning | default |
+| @--x@    | @--x=N@     | gadget screen position of x to N | 0 |
+| @--y@    | @--y=N@     | gadget screen position of y to N | 0 |
+| @--scale@| @--scale=N@ | scale ratio of gadget screen size to N | 1.0 |
+| @--fps@  | @--fps=N@   | animation frame per second to N | 60 |
 
 * Note1) default fps(=60) consumes kind of cpu usage. recommend to set fewer fps.
 
