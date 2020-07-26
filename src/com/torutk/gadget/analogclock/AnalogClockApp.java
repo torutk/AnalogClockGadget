@@ -7,8 +7,11 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Region;
@@ -29,6 +32,7 @@ public class AnalogClockApp extends Application {
     private double dragStartX;
     private double dragStartY;
     private ContextMenu popup = new ContextMenu();
+    private BooleanProperty alwaysOnTopProperty = new SimpleBooleanProperty(false);
     private Region root;
     private Stage stage;
     private ResourceBundle bundle;
@@ -70,7 +74,10 @@ public class AnalogClockApp extends Application {
         zoomInItem.setOnAction(e -> zoom(1.1));
         MenuItem zoomOutItem = new MenuItem(bundle.getString("menu_zoomOut"));
         zoomOutItem.setOnAction(e -> zoom(0.9));
-        popup.getItems().addAll(zoomInItem, zoomOutItem, exitItem);
+        CheckMenuItem onTopItem = new CheckMenuItem(bundle.getString("menu_alwaysOnTop"));
+        alwaysOnTopProperty.bind(onTopItem.selectedProperty());
+        alwaysOnTopProperty.addListener((observable, oldValue, newValue) -> primaryStage.setAlwaysOnTop(newValue));
+        popup.getItems().addAll(zoomInItem, zoomOutItem, onTopItem, exitItem);
         // コンテキストメニュー操作（OS依存）をしたときに、ポップアップメニュー表示
         // Windows OSでは、マウスの右クリック、touchパネルの長押しで発生
         root.setOnContextMenuRequested(e -> {
