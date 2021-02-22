@@ -6,7 +6,7 @@ This is a desktop analog clock gadget program written in Java and JavaFX.
 
 h2. How to build
 
-This repository has a source projects of Analog Clock Gadget to build with Gradle 6.4+ and Java SE 11+ with JavaFX.
+This repository has a source project of Analog Clock Gadget to build with Gradle 6.4+ and Java SE 11+ with JavaFX.
 Additionally, to create Windows installer with Java SE 14+ and WiX Toolset 3.10+.
 
 h2. Usage
@@ -33,7 +33,7 @@ h2. reference
 
 h3. history of development
 
-The wiki page of the history of this gadget is as follows (in Japanese).
+The url below is the wiki page of the development history of this gadget (in Japanese).
 
 https://www.torutk.com/projects/swe/wiki/JavaFX%E3%81%A8%E3%82%A2%E3%83%8A%E3%83%AD%E3%82%B0%E6%99%82%E8%A8%88
 
