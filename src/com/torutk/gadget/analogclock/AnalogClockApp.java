@@ -39,7 +39,8 @@ public class AnalogClockApp extends Application {
     
     @Override
     public void start(Stage primaryStage) throws Exception {
-        alwaysOnTopProperty.addListener(((observable, oldValue, newValue) -> primaryStage.setAlwaysOnTop(newValue)));
+        stage = initPrimaryStage(primaryStage);
+        alwaysOnTopProperty.addListener(((observable, oldValue, newValue) -> stage.setAlwaysOnTop(newValue)));
         parseParameters();
         bundle = ResourceBundle.getBundle(getClass().getName());
         root = FXMLLoader.load(getClass().getResource("AnalogClockView.fxml"), bundle);
@@ -53,8 +54,8 @@ public class AnalogClockApp extends Application {
             dragStartY = e.getSceneY();
         });
         scene.setOnMouseDragged(e -> {
-            primaryStage.setX(e.getScreenX() - dragStartX);
-            primaryStage.setY(e.getScreenY() - dragStartY);
+            stage.setX(e.getScreenX() - dragStartX);
+            stage.setY(e.getScreenY() - dragStartY);
         });
         // 時計のサイズを変更する
         // マウスのホイール操作によるScrollEventを選別してウィンドウサイズを変更
@@ -82,13 +83,24 @@ public class AnalogClockApp extends Application {
         // コンテキストメニュー操作（OS依存）をしたときに、ポップアップメニュー表示
         // Windows OSでは、マウスの右クリック、touchパネルの長押しで発生
         root.setOnContextMenuRequested(e -> {
-            popup.show(primaryStage, e.getScreenX(), e.getScreenY());
+            popup.show(stage, e.getScreenX(), e.getScreenY());
         });
         
-        stage = primaryStage;
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.setScene(scene);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private Stage initPrimaryStage(Stage primaryStage) {
+        primaryStage.initStyle(StageStyle.UTILITY);
+        primaryStage.setOpacity(0);
+        primaryStage.setWidth(0);
+        primaryStage.setHeight(0);
+        primaryStage.setX(Double.MAX_VALUE);
+
+        Stage secondaryStage = new Stage(StageStyle.TRANSPARENT);
+        secondaryStage.initOwner(primaryStage);
         primaryStage.show();
+        return secondaryStage;
     }
 
     private void zoom(double factor) {
