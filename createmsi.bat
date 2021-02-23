@@ -1,7 +1,7 @@
 @echo off
 
 REM increment the version number each creation.
-set APP_VERSION=0.6.0
+set APP_VERSION=0.7.4
 
 %JAVA_HOME%\bin\jpackage ^
 --type msi ^
@@ -17,4 +17,5 @@ set APP_VERSION=0.6.0
 --module-path build\libs ^
 --module com.torutk.gadget.analogclock ^
 --java-options "-Xms32m -Xmx64m -Xss256k -XX:TieredStopAtLevel=1 -XX:CICompilerCount=2 -XX:CompileThreshold=1500 -XX:InitialCodeCacheSize=160k -XX:ReservedCodeCacheSize=32m -XX:MetaspaceSize=12m -XX:+UseSerialGC" ^
+--arguments "--x=0 --y=0 --scale=1.0 --fps=5.0 --on-top=false" ^
 --verbose
