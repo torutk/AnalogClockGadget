@@ -1,21 +1,18 @@
 plugins {
-    id 'application'
+    id 'org.beryx.jlink' version "2.24.2"
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-    modularity.inferModulePath = true
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 repositories {
-    flatDir {
-        dirs "${property('library.junit5.dir')}"
-    }
+    mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.platform:junit-platform-console-standalone:1.6.2'
+    testImplementation 'org.junit.platform:junit-platform-console-standalone:1.8.1'
 }
 
 sourceSets {
@@ -45,4 +42,32 @@ application {
 
 test {
     useJUnitPlatform()
+}
+
+jlink {
+    launcher {
+        jvmArgs = [
+            '-Xms32m', '-Xmx64m', '-Xss256k', '-XX:TieredStopAtLevel=1',
+            '-XX:CICompilerCount=2', '-XX:CompileThreshold=1500',
+            '-XX:InitialCodeCacheSize=160k', '-XX:ReservedCodeCacheSize=32m',
+            '-XX:MetaspaceSize=12m', '-XX:+UseSerialGC'
+        ]
+        args = [
+            '--x=0', '--y=0', '--scale=1.0', '--fps=5.0', '--on-top=false'
+        ]
+    }
+    jpackage {
+        installerName = 'AnalogClock'
+        appVersion = '0.8.1'
+        if (org.gradle.internal.os.OperatingSystem.current().windows) {
+            installerType = 'msi'
+            installerOptions += [
+                '--win-menu-group', 'High Bridge',
+                '--win-menu',
+                '--win-shortcut',
+                '--win-upgrade-uuid', 'fe287b25-e03d-4744-90f4-96b05dc36bf0',
+                '--vendor', 'High Bridge'
+            ]
+        }
+    }
 }
